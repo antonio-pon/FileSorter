@@ -4,6 +4,8 @@ from os.path import isdir, join
 import shutil
 import re
 
+# Comment from cloning repository
+
 SORTED_DIRECTORY = 'A:\\Downloads'
 
 VIDEOS_PATH = join(SORTED_DIRECTORY, 'Videos')
