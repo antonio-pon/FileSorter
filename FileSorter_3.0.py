@@ -7,7 +7,6 @@ import re
 # Comment from cloning repository
 # Comment from first repository
 # Second comment from repos
-# Comment from clone repos in beta-branch THIS IS BAD!!!
 
 SORTED_DIRECTORY = 'A:\\Downloads'
 
