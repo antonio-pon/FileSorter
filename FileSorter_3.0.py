@@ -8,6 +8,7 @@ import re
 # Comment from first repository
 # Second comment from repos
 # Comment from clone repos in beta-branch
+# Second comment from clone repos in beta
 
 SORTED_DIRECTORY = 'A:\\Downloads'
 
