@@ -7,6 +7,9 @@ import re
 # Comment from cloning repository
 # Comment from first repository
 # Second comment from repos
+# Comment from clone repos in beta-branch
+# Second comment from clone repos in beta
+# Resolve merge conflict
 
 SORTED_DIRECTORY = 'A:\\Downloads'
 
