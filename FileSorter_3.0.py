@@ -11,7 +11,8 @@ import re
 # Second comment from clone repos in beta
 # Resolve merge conflict
 
-def empty_func:
+def empty_func():
+   print('This function dont make enething.')
    pass
 
 SORTED_DIRECTORY = 'A:\\Downloads'
