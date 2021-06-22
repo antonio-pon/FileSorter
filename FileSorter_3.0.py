@@ -1,8 +1,8 @@
 import os
-from os.path import exists
-from os.path import isdir, join
 import shutil
-import re
+from os.path import exists
+from os.path import join
+
 
 # Comment from cloning repository
 # Comment from first repository
@@ -11,8 +11,9 @@ import re
 # Second comment from clone repos in beta
 # Resolve merge conflict
 
-def empty_func:
-   pass
+def empty_func():
+    pass
+
 
 SORTED_DIRECTORY = 'A:\\Downloads'
 
@@ -22,17 +23,15 @@ VIDEOS = ('.mkv', '.avi', '.mp4', '.mpeg', '.asf', '.f4v', '.flv',
           '.mts', '.rm', '.rmvb', '.vcd', '.vid', '.vob', '.webm',
           '.wmv', '.yuv')
 
-
 PICTURES_PATH = join(SORTED_DIRECTORY, 'Pictures')
-PICTURES = ('.bmp', '.gif', '.jpg', '.jpeg', '.jpe', '.jfif', 
+PICTURES = ('.bmp', '.gif', '.jpg', '.jpeg', '.jpe', '.jfif',
             '.jp2', '.j2k', '.jpf', '.jpm', '.jpg2', '.j2c',
             '.jpc', '.png', '.tiff', '.tif', '.jxr', '.hdp',
             '.wdp', '.webp')
 
-
 DOCUMENTS_PATH = join(SORTED_DIRECTORY, 'Documents')
 DOCUMENTS = ('.doc', '.docx', '.xls', '.xlsx', '.pdf', '.rtf', 'odt',
-             '.docm', '.dot', '.dotm', '.dotx', '.xls', '.xlsx,', 
+             '.docm', '.dot', '.dotm', '.dotx', '.xls', '.xlsx,',
              '.xlsm', '.xlsb', '.csv', '.xltx', '.xltm', '.ppt',
              '.pptx', '.ods', '.odp')
 
@@ -59,51 +58,53 @@ file_format_list = [[VIDEOS, VIDEOS_PATH], [PICTURES, PICTURES_PATH],
                     [ARCHIVES, ARCHIVES_PATH],
                     [EXECUTABLE_FILES, EXECUTABLE_FILES_PATH]]
 
+
 def sort(path, file_format, new_location):
-    '''
+    """
     Перемещает файл path в каталог new_location,
     если он имеет расширение из списка file_format
-    '''
-    
+    """
+
     _, ext = os.path.splitext(path)
     _, file_name = os.path.split(path)
     postfix = 0
-    
+
     if ext.lower() in file_format:
-        
+
         new_path = os.path.join(new_location, file_name)
         tmp_path = new_path
-        
-        while os.path.exists(tmp_path): # если файл с именем dst уже доступен
+
+        while os.path.exists(tmp_path):  # если файл с именем dst уже доступен
             postfix += 1
             root, ext = os.path.splitext(new_path)
             tmp_path = '%s_%d%s' % (root, postfix, ext)
-            #print(tmp_path)
-            
+            # print(tmp_path)
+
         new_path = tmp_path
         return shutil.move(path, new_path)
 
+
 def checkDir(dir_path):
-    '''
+    """
     Проверяет, существует ли каталог dir_path,
     если нет, то создает его.
-    '''
-    
+    """
+
     if not exists(dir_path):
         os.makedirs(dir_path)
 
 
 def getFilesToSort(sorted_directory):
-    '''
+    """
     Возвращает список путей всех файлов из сортируемого каталога
-    '''
-    
+    """
+
     files_list = []
     dir_items = os.listdir(sorted_directory)
-    
+
     for item in dir_items:
         item_path = os.path.join(sorted_directory, item)
-        
+
         if os.path.isdir(item_path):
             continue
         else:
@@ -113,17 +114,16 @@ def getFilesToSort(sorted_directory):
 
 
 def main():
-
     count = 0
     files_list = getFilesToSort(SORTED_DIRECTORY)
-    
+
     for sorted_file in files_list:
 
         new_path = None
         count += 1
-        
+
         print(count, sorted_file, end=' ')
-        
+
         for file_format, file_format_path in file_format_list:
             checkDir(file_format_path)
             new_path = sort(sorted_file, file_format, file_format_path)
@@ -134,8 +134,8 @@ def main():
 
         if new_path is None:
             print('have unknown format.')
-            
-            
+
+
 if __name__ == '__main__':
     main()
-    input('Press any key to close the programm.')    
+    input('Press any key to close the programm.')
