@@ -11,6 +11,9 @@ import re
 # Second comment from clone repos in beta
 # Resolve merge conflict
 
+def empty_func:
+   pass
+
 SORTED_DIRECTORY = 'A:\\Downloads'
 
 VIDEOS_PATH = join(SORTED_DIRECTORY, 'Videos')
