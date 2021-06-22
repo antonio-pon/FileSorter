@@ -12,7 +12,8 @@ from os.path import join
 # Resolve merge conflict
 
 def empty_func():
-    pass
+   print('This function dont make enething.')
+   pass
 
 
 SORTED_DIRECTORY = 'A:\\Downloads'
